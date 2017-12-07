@@ -53,8 +53,8 @@ namespace PosistNode.App_Code
             encrypt.AddDataPair("phone", phone);
             encrypt.AddDataPair("value", value.ToString());
             //populate cipher and encrypted dat ato this node.
-            this._cipher = encrypt.GetCipher();
-            this._data = encrypt.GetEncryptedData();
+            this._cipher = encrypt.Cipher;
+            this._data = encrypt.EncryptedData;
         }
 
         public CipherBox Cipher

@@ -11,8 +11,9 @@ namespace PosistNode.App_Code
 {
     class Encrypter
     {
-        private const string KEY_VALUE_SEPARATOR = "!:!";
-        private const string DATA_SEPARATOR = "!;!";
+        public const string KEY_VALUE_SEPARATOR = "!:!";
+        public const string DATA_SEPARATOR = "!;!";
+        public const string PASSWORD_PADDING = "akj3498u3bdi3h3d3--3d-39hihoaskjdhakjsd3";
 
         private Dictionary<string, string> _data;
 
@@ -75,7 +76,7 @@ namespace PosistNode.App_Code
             Byte[] computedMD5 = md5Key.ComputeHash(digestBytes);
             md5Key.Dispose();
             this._algoKey = Convert.ToBase64String(computedMD5);
-            Byte[] computedSalt = UTF8Encoding.UTF8.GetBytes(this._password).Take<byte>(32).ToArray();
+            Byte[] computedSalt = UTF8Encoding.UTF8.GetBytes(this._password + PASSWORD_PADDING).Take<byte>(32).ToArray();
 
             //now encrypt the text with AES
             using (RijndaelManaged encryptAlgo = new RijndaelManaged())
