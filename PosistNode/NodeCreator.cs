@@ -16,5 +16,25 @@ namespace PosistNode
         {
             InitializeComponent();
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NodeCreator_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
