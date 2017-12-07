@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PosistNode
 {
-    public partial class Form1 : Form
+    public partial class NodeCreator : Form
     {
-        public Form1()
+        public NodeCreator()
         {
             InitializeComponent();
         }

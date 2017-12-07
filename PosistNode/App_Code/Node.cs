@@ -18,7 +18,7 @@ namespace PosistNode.App_Code
         /// <summary>
         /// unique id for the current node, each node in nodechain has a unique id
         /// </summary>
-        private int _nodeId = -1;
+        private long _nodeId = -1;
         /// <summary>
         /// the set number to which this node belongs
         /// </summary>
@@ -33,6 +33,49 @@ namespace PosistNode.App_Code
         private Node _childNode = null;
 
         private int childNodeId = -1;
+
+        private CipherBox _cipher;
+
+        public Node(long nodeId,string name, string address, string mobile, string phone, float value,string password)
+        {
+            this._nodeId = nodeId;
+            this._timestamp = DateTime.Now;
+            //encrypt all this data 
+            this.getEncryptData(name, address, mobile, phone, value,password);
+        }
+
+        private void getEncryptData(string name, string address, string mobile, string phone, float value,string password)
+        {
+            Encrypter encrypt = new Encrypter(password);
+            encrypt.AddDataPair("name", name);
+            encrypt.AddDataPair("address", address);
+            encrypt.AddDataPair("mobile", mobile);
+            encrypt.AddDataPair("phone", phone);
+            encrypt.AddDataPair("value", value.ToString());
+            //populate cipher and encrypted dat ato this node.
+            this._cipher = encrypt.GetCipher();
+            this._data = encrypt.GetEncryptedData();
+        }
+
+        public CipherBox Cipher
+        {
+            get
+            {
+                return this._cipher;
+            }
+        }
+
+        public int NodeNumber
+        {
+            get
+            {
+                return this._nodeSetNumber;
+            }
+            set
+            {
+                this._nodeSetNumber = value;
+            }
+        }
 
     }
 }
