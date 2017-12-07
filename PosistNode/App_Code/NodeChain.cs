@@ -51,13 +51,64 @@ namespace PosistNode.App_Code
         {
             node.ParentNode = this._parentNode;
             //add this node at then end of the chain
-            Node tranverser = this._parentNode;
-            while(tranverser.ChildNode != null)
+            Node traverser = this._parentNode;
+            while(traverser.ChildNode != null)
             {
-                tranverser = tranverser.ChildNode;
+                traverser = traverser.ChildNode;
             }
-            tranverser.ChildNode = node;
+            traverser.ChildNode = node;
             this._length++;
+        }
+
+        internal Node GetNodeById(long id)
+        {
+            Node traverser = this._parentNode;
+            while (traverser.ChildNode != null)
+            {
+                if(traverser.Id == id)
+                {
+                    return traverser;
+                }
+                traverser = traverser.ChildNode;
+            }
+            return null;
+        }
+
+        public Node RemoveNode(long nodeId)
+        {
+            Node traverser = this._parentNode;
+            if(this._parentNode.Id == nodeId)
+            {
+                this._parentNode = this._parentNode.ChildNode;
+                return traverser;
+            }
+            Node previous = null;
+            while (traverser.ChildNode != null)
+            {
+                if (traverser.Id == nodeId)
+                {
+                    previous.ChildNode = traverser.ChildNode;
+                    traverser.ChildNode = null;
+                    return traverser;
+                }
+                previous = traverser;
+                traverser = traverser.ChildNode;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// changed set Id of all the nodes attached with this chain.
+        /// </summary>
+        /// <param name="setId"></param>
+        internal void ChangeSetId(int setId)
+        {
+            Node traverser = this._parentNode;
+            while (traverser != null)
+            {
+                traverser.NodeNumber = setId;
+                traverser = traverser.ChildNode;
+            }
         }
 
         public int Length

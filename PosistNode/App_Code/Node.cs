@@ -41,7 +41,12 @@ namespace PosistNode.App_Code
             set
             {
                 _childNode = value;
-                this.childNodeId = value.Id;
+                if(value != null)
+                {
+                    value._nodeSetNumber = this._nodeSetNumber;
+                    value.ParentNode = this;
+                    this.childNodeId = value.Id;
+                }
             }
         }
 
@@ -138,6 +143,27 @@ namespace PosistNode.App_Code
             return true;
         }
 
+        private bool getNewEncrypter(Decrypter decrypter)
+        {
+            Encrypter encrypter = null;
+            try
+            {
+                encrypter = new Encrypter(this.Cipher.Password);
+                foreach (KeyValuePair<String, String> kv in decrypter.Data)
+                {
+                    encrypter.AddDataPair(kv.Key, kv.Value);
+                }
+            }
+            catch (Exception e)
+            {
+                //TODO - LOG
+                return false;
+            }
+            this._cipher = encrypter.Cipher;
+            this._data = encrypter.EncryptedData;
+            return true;
+        }
+
         public int ChainLength
         {
             get
@@ -155,6 +181,25 @@ namespace PosistNode.App_Code
                 }
                 return count;
             }
+        }
+
+        public void BreakUpNode(float valueInThisNode)
+        {
+            //decrypt the data, then create a new encrypter, with the new password
+            Decrypter decrypter = new Decrypter(this.Cipher, this._data);
+            float storedValue = float.Parse(decrypter.Data["value"]);
+            if(storedValue <= valueInThisNode)
+            {
+                throw new ArgumentException("Enter a value that is below the value of this node");
+            }
+            Node subNode = new Node(NodeManager.UniqueId,decrypter.Data["name"], decrypter.Data["address"], decrypter.Data["mobile"], decrypter.Data["phone"],
+                                    storedValue - valueInThisNode,this.Cipher.Password);
+            decrypter.Data["value"] = valueInThisNode.ToString();
+            this.getNewEncrypter(decrypter);
+            //add this node in between the chain
+            Node child = this.ChildNode;
+            this.ChildNode = subNode;
+            subNode.ChildNode = child;
         }
 
     }

@@ -13,18 +13,18 @@ namespace PosistNode.App_Code
     {
         private Dictionary<int, NodeSet> _sets = new Dictionary<int, NodeSet>();
 
-        private long _currentUniqueId = 0;
+        private static long _currentUniqueId = 0;
 
         /// <summary>
         /// contains the set key to which new nodes without any set get's added
         /// </summary>
         private int _noSetKey = -1;
 
-        public long UniqueId
+        public static long UniqueId
         {
             get
             {
-                return this._currentUniqueId++;
+                return _currentUniqueId++;
             }
         }
 
@@ -36,7 +36,7 @@ namespace PosistNode.App_Code
         public bool createNewNode(string name, string address, string mobile, string phone, float value,string password, int set = -1)
         {
             //create a node to insert
-            Node node = new Node(this.UniqueId, name, address, mobile, phone, value, password);
+            Node node = new Node(UniqueId, name, address, mobile, phone, value, password);
             this.addNodeToSet(this.getSetIndex(set), node);
             return true;
         }
@@ -111,9 +111,65 @@ namespace PosistNode.App_Code
             Node node = null;
             foreach(NodeSet set in this._sets.Values)
             {
-                
+                node = set.GetNodeById(id);
+                if(node != null)
+                {
+                    return node;
+                }
             }
             return node;
+        }
+
+        /// <summary>
+        /// shifts the node with the given id under the node of given parent id
+        /// </summary>
+        /// <param name="removeNodeId"></param>
+        /// <param name="newParentId"></param>
+        /// <returns>the shifted node</returns>
+        public Node shiftNode(long removeNodeId,long newParentId)
+        {
+            Node node = this.RemoveNode(removeNodeId);
+            if(node == null)
+            {
+                throw new ArgumentNullException("The Given NodeId has no associated node with it");
+            }
+            Node parent = this.GetNodeById(newParentId);
+            if (parent == null)
+            {
+                throw new ArgumentNullException("The Given Parent NodeId has no associated node with it");
+            }
+            node.ChangePassword(parent.Cipher.Password);
+            Node temp = parent.ChildNode;
+            parent.ChildNode = node;
+            node.ChildNode = temp;
+            return node;
+        }
+
+        public Node RemoveNode(long nodeId)
+        {
+            Node node = null;
+            foreach(NodeSet set in this._sets.Values)
+            {
+                node = set.RemoveNode(nodeId);
+                if(node != null)
+                {
+                    return node;
+                }
+            }
+            return node;
+        }
+
+        public void MergeSets(int setId1, int setId2)
+        {
+            if(!this._sets.ContainsKey(setId1))
+            {
+                throw new ArgumentNullException("No Set with Set ID 1 present.");
+            }
+            if (!this._sets.ContainsKey(setId2))
+            {
+                throw new ArgumentNullException("No Set with Set ID 2 present.");
+            }
+            this._sets[setId1].Merge(this._sets[setId2]);
         }
     }
 }
