@@ -70,8 +70,8 @@ namespace PosistNode.App_Code
         private void encrypt()
         {
             this.createDataDigest();
-
-            Byte[] digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest);
+            //to get unique algo key each time.
+            Byte[] digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest + DateTime.UtcNow.ToString() + PASSWORD_PADDING);
             MD5CryptoServiceProvider md5Key = new MD5CryptoServiceProvider();
             Byte[] computedMD5 = md5Key.ComputeHash(digestBytes);
             md5Key.Dispose();
