@@ -30,5 +30,35 @@ namespace PosistNode.App_Code
             node.NodeNumber = this._setId;
             this._nodeList.Add(new NodeChain(node));
         }
+
+        public Node GetNode(string password,string key)
+        {
+            Node node = null;
+            foreach(NodeChain chain in _nodeList)
+            {
+                node = chain.GetNode(password, key);
+                if (node != null)
+                {
+                    return node;
+                }
+            }
+            return node;
+        }
+
+        public int MaxLength
+        {
+            get
+            {
+                int max = 0;
+                foreach(NodeChain chain in _nodeList)
+                {
+                    if(chain.Length > max)
+                    {
+                        max = chain.Length;
+                    }
+                }
+                return max;
+            }
+        }
     }
 }
