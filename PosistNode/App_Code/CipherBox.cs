@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PosistNode.App_Code
 {
-    class CipherBox
+    public class CipherBox
     {
         private string _password;
         private string _key;
