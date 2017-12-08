@@ -15,7 +15,7 @@ namespace PosistNode.App_Code
         {
             get
             {
-                return this._password
+                return this._password;
             }
         }
 

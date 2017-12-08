@@ -71,19 +71,26 @@ namespace PosistNode.App_Code
         {
             this.createDataDigest();
             //to get unique algo key each time.
-            Byte[] digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest + DateTime.UtcNow.ToString() + PASSWORD_PADDING);
+            Byte[] digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest);
+            Byte[] md5digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest + DateTime.UtcNow.ToString() + PASSWORD_PADDING);
             MD5CryptoServiceProvider md5Key = new MD5CryptoServiceProvider();
-            Byte[] computedMD5 = md5Key.ComputeHash(digestBytes);
+            Byte[] computedMD5 = md5Key.ComputeHash(md5digestBytes);
             md5Key.Dispose();
             this._algoKey = Convert.ToBase64String(computedMD5);
+            Byte[] realIV = new byte[32];
+            for(int i = 0; i < realIV.Length; i++)
+            {
+                realIV[i] = computedMD5[i % computedMD5.Length];
+            }
             Byte[] computedSalt = UTF8Encoding.UTF8.GetBytes(this._password + PASSWORD_PADDING).Take<byte>(32).ToArray();
 
             //now encrypt the text with AES
             using (RijndaelManaged encryptAlgo = new RijndaelManaged())
             {
-                encryptAlgo.IV = computedMD5;
+                //encryptAlgo.BlockSize = 256;
+                encryptAlgo.Padding = PaddingMode.PKCS7;
+                encryptAlgo.IV = computedMD5;//realIV;
                 encryptAlgo.Key = computedSalt;
-                encryptAlgo.BlockSize = 256;
                 using (ICryptoTransform encrypter = encryptAlgo.CreateEncryptor())
                 {
                     using (var memStream = new MemoryStream())
@@ -92,10 +99,15 @@ namespace PosistNode.App_Code
                         {
                             stream.Write(digestBytes, 0, digestBytes.Length);
                             stream.FlushFinalBlock();
+                            //stream.Clear();
+                            stream.Close();
                         }
                         this._encryptedData = Convert.ToBase64String(memStream.ToArray());
+                        memStream.Close();
                     }
+                    encrypter.Dispose();
                 }
+                encryptAlgo.Clear();
             }
 
             this._cipher = new CipherBox(this._password, this._algoKey);

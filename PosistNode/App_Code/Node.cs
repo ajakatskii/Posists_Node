@@ -143,7 +143,7 @@ namespace PosistNode.App_Code
             return true;
         }
 
-        private bool getNewEncrypter(Decrypter decrypter)
+        private bool getNewEncrypter(Decrypter decrypter,bool modifyCipher = false)
         {
             Encrypter encrypter = null;
             try
@@ -159,7 +159,11 @@ namespace PosistNode.App_Code
                 //TODO - LOG
                 return false;
             }
-            this._cipher = encrypter.Cipher;
+            //only change the password and the key if requested, otherwise let the old key go on.
+            if(modifyCipher)
+            {
+                this._cipher = encrypter.Cipher;
+            }
             this._data = encrypter.EncryptedData;
             return true;
         }

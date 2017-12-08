@@ -83,6 +83,11 @@ namespace PosistNode.App_Code
                 node = chain.RemoveNode(nodeId);
                 if (node != null)
                 {
+                    //remove this chain if it has 0 length
+                    if(node.ChainLength == 0)
+                    {
+                        this._nodeList.Remove(chain);
+                    }
                     return node;
                 }
             }

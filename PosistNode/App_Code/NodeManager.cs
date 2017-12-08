@@ -133,6 +133,10 @@ namespace PosistNode.App_Code
             {
                 throw new ArgumentNullException("The Given NodeId has no associated node with it");
             }
+            if(node.ParentNode != null && node.ParentNode.Id == newParentId)
+            {
+                throw new ArgumentNullException("Already has the given parent");
+            }
             Node parent = this.GetNode(newParentId);
             if (parent == null)
             {
@@ -170,6 +174,7 @@ namespace PosistNode.App_Code
                 throw new ArgumentNullException("No Set with Set ID 2 present.");
             }
             this._sets[setId1].Merge(this._sets[setId2]);
+            this._sets.Remove(setId2);
         }
     }
 }

@@ -62,8 +62,12 @@ namespace PosistNode.App_Code
 
         internal Node GetNodeById(long id)
         {
+            if(this._parentNode.Id == id)
+            {
+                return this._parentNode;
+            }
             Node traverser = this._parentNode;
-            while (traverser.ChildNode != null)
+            while (traverser != null)
             {
                 if(traverser.Id == id)
                 {
@@ -80,10 +84,11 @@ namespace PosistNode.App_Code
             if(this._parentNode.Id == nodeId)
             {
                 this._parentNode = this._parentNode.ChildNode;
+                this._length = 0;
                 return traverser;
             }
             Node previous = null;
-            while (traverser.ChildNode != null)
+            while (traverser != null)
             {
                 if (traverser.Id == nodeId)
                 {
@@ -115,7 +120,12 @@ namespace PosistNode.App_Code
         {
             get
             {
-                return this._length;
+                if(this._length == 0)
+                {
+                    return 0;
+                }else{
+                    return this._parentNode.ChainLength;
+                }
             }
         }
     }
