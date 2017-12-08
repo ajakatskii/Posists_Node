@@ -57,7 +57,7 @@ namespace PosistNode.ViewModel
             if(this.DisplayNode != null)
             {
                 //verify for the current node!
-                return (this.DisplayNode.Cipher.Password == password && this.DisplayNode.Cipher.Key == key)
+                return (this.DisplayNode.Cipher.Password == password && this.DisplayNode.Cipher.Key == key);
             }
             else
             {
@@ -69,7 +69,7 @@ namespace PosistNode.ViewModel
         public bool FindNode(long nodeId)
         {
             this.DisplayNode = this._nodeManager.GetNode(nodeId);
-            return (this.DisplayNode == null);
+            return (this.DisplayNode != null);
         }
 
         public bool MergeSets(int setId1,int setId2)
@@ -85,8 +85,23 @@ namespace PosistNode.ViewModel
             return true;
         }
 
-        public bool Transfer(long transferNodeId, long transferParentNodeId)
+        public bool Transfer(long transferNodeId, long transferParentNodeId,string password,string key)
         {
+            //get the node that belongs to the given verification and check if it is the right node
+            Node prev = this.DisplayNode;
+            if(this.VerifyNode(password,key))
+            {
+                if(this.DisplayNode.Id != transferNodeId)
+                {
+                    this.DisplayNode = prev;
+                    this._lastError = "Invalid Credentials";
+                    return false;
+                }
+                this.DisplayNode = prev;
+            }else{
+                this._lastError = "Invalid Credentials";
+                return false;
+            }
             try
             {
                 this._nodeManager.shiftNode(transferNodeId, transferParentNodeId);

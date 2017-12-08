@@ -1,1 +1,9 @@
 F:\Me_Projects\Posist\PosistNode\PosistNode\bin\Debug\PosistNode.exe.config
+F:\Me_Projects\Posist\PosistNode\PosistNode\obj\Debug\PosistNode.csprojResolveAssemblyReference.cache
+F:\Me_Projects\Posist\PosistNode\PosistNode\obj\Debug\PosistNode.NodeCreator.resources
+F:\Me_Projects\Posist\PosistNode\PosistNode\obj\Debug\PosistNode.Properties.Resources.resources
+F:\Me_Projects\Posist\PosistNode\PosistNode\obj\Debug\PosistNode.csproj.GenerateResource.Cache
+F:\Me_Projects\Posist\PosistNode\PosistNode\bin\Debug\PosistNode.exe
+F:\Me_Projects\Posist\PosistNode\PosistNode\bin\Debug\PosistNode.pdb
+F:\Me_Projects\Posist\PosistNode\PosistNode\obj\Debug\PosistNode.exe
+F:\Me_Projects\Posist\PosistNode\PosistNode\obj\Debug\PosistNode.pdb

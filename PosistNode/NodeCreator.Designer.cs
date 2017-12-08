@@ -676,7 +676,7 @@
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.cmdCreate);
             this.Controls.Add(this.newNodeGb);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NodeCreator";
             this.Text = "Node Manager";
             this.Load += new System.EventHandler(this.NodeCreator_Load);
