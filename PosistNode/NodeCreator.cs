@@ -23,6 +23,7 @@ namespace PosistNode
         private void NodeCreator_Load(object sender, EventArgs e)
         {
             this._vm = new NodeManagerVM();
+            this.clearNewNode();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -131,17 +132,34 @@ namespace PosistNode
 
         private void fillNode(App_Code.Node node)
         {
+            if(node == null)
+            {
+                return;
+            }
             Dictionary<string, string> data = node.GetData();
-            this.nametxt.Text = data["name"];
-            this.addressTxt.Text = data["address"];
-            this.mobileTxt.Text = data["mobile"];
-            this.phoneTxt.Text = data["phone"];
-            this.valueTxt.Text = data["value"];
+            
+            this.nametxt.Text = data.ContainsKey("name") ? data["name"] : "";
+            this.addressTxt.Text = data.ContainsKey("address") ? data["address"] : "";
+            this.mobileTxt.Text = data.ContainsKey("mobile") ? data["mobile"] : "";
+            this.phoneTxt.Text = data.ContainsKey("phone") ? data["phone"] : "";
+            this.valueTxt.Text = data.ContainsKey("value") ? data["value"] : "";
             this.setTxt.Text = node.NodeNumber.ToString();
             this.algoKeyLbl.Text = node.Cipher.Key;
             this.saveIdLbl.Text = node.Id.ToString();
             this.passText.Text = node.Cipher.Password;
             this.Mode = Constants.Mode.Edit;
+            if(node.ParentNode != null)
+            {
+                this.parentNodeIdTxt.Text = node.ParentNode.Id.ToString();
+            }
+            else
+            {
+                this.parentNodeIdTxt.Text = "First Node";
+            }
+            if(node.ChildNode != null)
+            {
+                this.childNodeIdTxt.Text = node.ChildNode.Id.ToString();
+            }
         }
 
         private bool validateForVerify()
@@ -167,7 +185,7 @@ namespace PosistNode
         private void getNodeBtn_Click(object sender, EventArgs e)
         {
             long nodeId;
-            if(long.TryParse(this.nodeIdTxt.Text,out nodeId))
+            if(!long.TryParse(this.nodeIdTxt.Text,out nodeId))
             {
                 this.nodeIdTxt.Focus();
                 MessageBox.Show("Enter a Valid Node Id");
@@ -228,12 +246,12 @@ namespace PosistNode
         {
             bool pass = true;
             int garbage;
-            if (String.IsNullOrWhiteSpace(this.set1Txt.Text) || int.TryParse(this.set1Txt.Text,out garbage))
+            if (String.IsNullOrWhiteSpace(this.set1Txt.Text) || !int.TryParse(this.set1Txt.Text,out garbage))
             {
                 pass = false;
                 this.set1Txt.Focus();
             }
-            if (String.IsNullOrWhiteSpace(this.set2Txt.Text) || int.TryParse(this.set2Txt.Text, out garbage))
+            if (String.IsNullOrWhiteSpace(this.set2Txt.Text) || !int.TryParse(this.set2Txt.Text, out garbage))
             {
                 pass = false;
                 this.set2Txt.Focus();
@@ -247,11 +265,11 @@ namespace PosistNode
 
         private void transferBtn_Click(object sender, EventArgs e)
         {
-            if(!this.validateForIntegers(this.tranferNodeIdTxt,this.transferParentNodeId))
+            if(!this.validateForIntegers(this.tranferNodeIdTxt,this.transferParentNodeId) || !this.validateForVerify())
             {
                 return;
             }
-            if(!this._vm.Transfer(int.Parse(this.tranferNodeIdTxt.Text), int.Parse(this.transferParentNodeId.Text)))
+            if(!this._vm.Transfer(int.Parse(this.tranferNodeIdTxt.Text), int.Parse(this.transferParentNodeId.Text),this.passText.Text,this.algoKeyTxt.Text))
             {
                 MessageBox.Show("Tranfer Failed - " + this._vm.LastError);
             }
@@ -271,13 +289,13 @@ namespace PosistNode
             }
             foreach(TextBox tb in box)
             {
-                if (String.IsNullOrWhiteSpace(tb.Text) || int.TryParse(tb.Text, out garbage))
+                if (String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out garbage))
                 {
                     pass = false;
                     tb.Focus();
                 }
             }
-            return pass
+            return pass;
         }
 
         private void subChainLengthCmd_Click(object sender, EventArgs e)
@@ -316,6 +334,19 @@ namespace PosistNode
         private void maxChain_Click(object sender, EventArgs e)
         {
             this.maxChainLenTxt.Text = this._vm.MaxChainLength().ToString();
+        }
+
+        private void algoKeyLbl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyData == (Keys.Control | Keys.ControlKey))
+            {
+                return;
+            }
+            if(!(e.Control &&  e.KeyData == (Keys.C | Keys.Control)))
+            {
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
         }
     }
 }

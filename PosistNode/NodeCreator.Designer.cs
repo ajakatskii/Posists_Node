@@ -45,7 +45,6 @@
             this.cmdSave = new System.Windows.Forms.Button();
             this.passText = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.algoKeyLbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.algoKeyTxt = new System.Windows.Forms.TextBox();
@@ -80,6 +79,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.maxChainLenTxt = new System.Windows.Forms.TextBox();
             this.maxChain = new System.Windows.Forms.Button();
+            this.algoKeyLbl = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.childNodeIdTxt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.parentNodeIdTxt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.newNodeGb.SuspendLayout();
             this.verifyGb.SuspendLayout();
             this.editGb.SuspendLayout();
@@ -91,6 +97,10 @@
             // 
             // newNodeGb
             // 
+            this.newNodeGb.Controls.Add(this.childNodeIdTxt);
+            this.newNodeGb.Controls.Add(this.label13);
+            this.newNodeGb.Controls.Add(this.parentNodeIdTxt);
+            this.newNodeGb.Controls.Add(this.label14);
             this.newNodeGb.Controls.Add(this.setTxt);
             this.newNodeGb.Controls.Add(this.label7);
             this.newNodeGb.Controls.Add(this.label6);
@@ -108,7 +118,7 @@
             this.newNodeGb.Controls.Add(this.label1);
             this.newNodeGb.Location = new System.Drawing.Point(13, 13);
             this.newNodeGb.Name = "newNodeGb";
-            this.newNodeGb.Size = new System.Drawing.Size(344, 219);
+            this.newNodeGb.Size = new System.Drawing.Size(344, 260);
             this.newNodeGb.TabIndex = 0;
             this.newNodeGb.TabStop = false;
             this.newNodeGb.Text = "Node Details";
@@ -143,7 +153,7 @@
             this.addressTxt.Location = new System.Drawing.Point(101, 51);
             this.addressTxt.Name = "addressTxt";
             this.addressTxt.Size = new System.Drawing.Size(215, 20);
-            this.addressTxt.TabIndex = 3;
+            this.addressTxt.TabIndex = 2;
             // 
             // label3
             // 
@@ -176,21 +186,21 @@
             this.mobileTxt.Location = new System.Drawing.Point(101, 77);
             this.mobileTxt.Name = "mobileTxt";
             this.mobileTxt.Size = new System.Drawing.Size(215, 20);
-            this.mobileTxt.TabIndex = 7;
+            this.mobileTxt.TabIndex = 3;
             // 
             // phoneTxt
             // 
             this.phoneTxt.Location = new System.Drawing.Point(101, 103);
             this.phoneTxt.Name = "phoneTxt";
             this.phoneTxt.Size = new System.Drawing.Size(215, 20);
-            this.phoneTxt.TabIndex = 8;
+            this.phoneTxt.TabIndex = 4;
             // 
             // valueTxt
             // 
             this.valueTxt.Location = new System.Drawing.Point(101, 129);
             this.valueTxt.Name = "valueTxt";
             this.valueTxt.Size = new System.Drawing.Size(215, 20);
-            this.valueTxt.TabIndex = 9;
+            this.valueTxt.TabIndex = 5;
             // 
             // label6
             // 
@@ -212,7 +222,7 @@
             // 
             // cmdCreate
             // 
-            this.cmdCreate.Location = new System.Drawing.Point(12, 238);
+            this.cmdCreate.Location = new System.Drawing.Point(12, 299);
             this.cmdCreate.Name = "cmdCreate";
             this.cmdCreate.Size = new System.Drawing.Size(92, 41);
             this.cmdCreate.TabIndex = 1;
@@ -222,7 +232,7 @@
             // 
             // cmdSave
             // 
-            this.cmdSave.Location = new System.Drawing.Point(110, 238);
+            this.cmdSave.Location = new System.Drawing.Point(110, 299);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(92, 41);
             this.cmdSave.TabIndex = 2;
@@ -235,7 +245,7 @@
             this.passText.Location = new System.Drawing.Point(424, 21);
             this.passText.Name = "passText";
             this.passText.Size = new System.Drawing.Size(212, 20);
-            this.passText.TabIndex = 3;
+            this.passText.TabIndex = 7;
             // 
             // label8
             // 
@@ -245,18 +255,6 @@
             this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "Password";
-            // 
-            // algoKeyLbl
-            // 
-            this.algoKeyLbl.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.algoKeyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.algoKeyLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.algoKeyLbl.Location = new System.Drawing.Point(363, 70);
-            this.algoKeyLbl.Name = "algoKeyLbl";
-            this.algoKeyLbl.Size = new System.Drawing.Size(273, 40);
-            this.algoKeyLbl.TabIndex = 14;
-            this.algoKeyLbl.Text = "None";
-            this.algoKeyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
@@ -299,7 +297,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(220, 253);
+            this.label12.Location = new System.Drawing.Point(220, 314);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 20);
             this.label12.TabIndex = 19;
@@ -309,7 +307,7 @@
             // 
             this.modeLbl.AutoSize = true;
             this.modeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modeLbl.Location = new System.Drawing.Point(289, 250);
+            this.modeLbl.Location = new System.Drawing.Point(289, 311);
             this.modeLbl.Name = "modeLbl";
             this.modeLbl.Size = new System.Drawing.Size(56, 29);
             this.modeLbl.TabIndex = 20;
@@ -336,9 +334,9 @@
             // 
             // cmdBreakNode
             // 
-            this.cmdBreakNode.Location = new System.Drawing.Point(171, 19);
+            this.cmdBreakNode.Location = new System.Drawing.Point(171, 31);
             this.cmdBreakNode.Name = "cmdBreakNode";
-            this.cmdBreakNode.Size = new System.Drawing.Size(92, 41);
+            this.cmdBreakNode.Size = new System.Drawing.Size(92, 26);
             this.cmdBreakNode.TabIndex = 23;
             this.cmdBreakNode.Text = "Break Node";
             this.cmdBreakNode.UseVisualStyleBackColor = true;
@@ -346,9 +344,9 @@
             // 
             // subChainLengthCmd
             // 
-            this.subChainLengthCmd.Location = new System.Drawing.Point(171, 66);
+            this.subChainLengthCmd.Location = new System.Drawing.Point(171, 63);
             this.subChainLengthCmd.Name = "subChainLengthCmd";
-            this.subChainLengthCmd.Size = new System.Drawing.Size(92, 41);
+            this.subChainLengthCmd.Size = new System.Drawing.Size(92, 26);
             this.subChainLengthCmd.TabIndex = 24;
             this.subChainLengthCmd.Text = "Sub Chain Length ";
             this.subChainLengthCmd.UseVisualStyleBackColor = true;
@@ -358,7 +356,7 @@
             // 
             this.subChainLengthTxt.AutoSize = true;
             this.subChainLengthTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subChainLengthTxt.Location = new System.Drawing.Point(65, 72);
+            this.subChainLengthTxt.Location = new System.Drawing.Point(64, 62);
             this.subChainLengthTxt.Name = "subChainLengthTxt";
             this.subChainLengthTxt.Size = new System.Drawing.Size(57, 24);
             this.subChainLengthTxt.TabIndex = 25;
@@ -371,7 +369,7 @@
             this.verifyGb.Controls.Add(this.label11);
             this.verifyGb.Controls.Add(this.verifyNodeCmd);
             this.verifyGb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.verifyGb.Location = new System.Drawing.Point(363, 119);
+            this.verifyGb.Location = new System.Drawing.Point(363, 160);
             this.verifyGb.Name = "verifyGb";
             this.verifyGb.Size = new System.Drawing.Size(273, 113);
             this.verifyGb.TabIndex = 26;
@@ -384,16 +382,16 @@
             this.editGb.Controls.Add(this.cmdBreakNode);
             this.editGb.Controls.Add(this.subChainLengthCmd);
             this.editGb.Controls.Add(this.subChainLengthTxt);
-            this.editGb.Location = new System.Drawing.Point(367, 238);
+            this.editGb.Location = new System.Drawing.Point(367, 279);
             this.editGb.Name = "editGb";
-            this.editGb.Size = new System.Drawing.Size(269, 143);
+            this.editGb.Size = new System.Drawing.Size(269, 102);
             this.editGb.TabIndex = 27;
             this.editGb.TabStop = false;
             this.editGb.Text = "Edit Node";
             // 
             // breakValuetxt
             // 
-            this.breakValuetxt.Location = new System.Drawing.Point(18, 30);
+            this.breakValuetxt.Location = new System.Drawing.Point(19, 31);
             this.breakValuetxt.Name = "breakValuetxt";
             this.breakValuetxt.Size = new System.Drawing.Size(136, 20);
             this.breakValuetxt.TabIndex = 19;
@@ -404,7 +402,7 @@
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.exitBtn.Location = new System.Drawing.Point(271, 442);
+            this.exitBtn.Location = new System.Drawing.Point(271, 503);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(77, 41);
             this.exitBtn.TabIndex = 28;
@@ -416,7 +414,7 @@
             // 
             this.getNodeGb.Controls.Add(this.nodeIdTxt);
             this.getNodeGb.Controls.Add(this.getNodeBtn);
-            this.getNodeGb.Location = new System.Drawing.Point(13, 294);
+            this.getNodeGb.Location = new System.Drawing.Point(13, 355);
             this.getNodeGb.Name = "getNodeGb";
             this.getNodeGb.Size = new System.Drawing.Size(123, 114);
             this.getNodeGb.TabIndex = 28;
@@ -447,7 +445,7 @@
             this.mergeGb.Controls.Add(this.set2Txt);
             this.mergeGb.Controls.Add(this.set1Txt);
             this.mergeGb.Controls.Add(this.mergeBtn);
-            this.mergeGb.Location = new System.Drawing.Point(173, 294);
+            this.mergeGb.Location = new System.Drawing.Point(173, 355);
             this.mergeGb.Name = "mergeGb";
             this.mergeGb.Size = new System.Drawing.Size(184, 114);
             this.mergeGb.TabIndex = 29;
@@ -476,7 +474,7 @@
             this.set2Txt.Location = new System.Drawing.Point(108, 39);
             this.set2Txt.Name = "set2Txt";
             this.set2Txt.Size = new System.Drawing.Size(59, 20);
-            this.set2Txt.TabIndex = 24;
+            this.set2Txt.TabIndex = 20;
             // 
             // label17
             // 
@@ -533,14 +531,14 @@
             this.transferParentNodeId.Location = new System.Drawing.Point(117, 42);
             this.transferParentNodeId.Name = "transferParentNodeId";
             this.transferParentNodeId.Size = new System.Drawing.Size(112, 20);
-            this.transferParentNodeId.TabIndex = 24;
+            this.transferParentNodeId.TabIndex = 35;
             // 
             // tranferNodeIdTxt
             // 
             this.tranferNodeIdTxt.Location = new System.Drawing.Point(117, 16);
             this.tranferNodeIdTxt.Name = "tranferNodeIdTxt";
             this.tranferNodeIdTxt.Size = new System.Drawing.Size(112, 20);
-            this.tranferNodeIdTxt.TabIndex = 19;
+            this.tranferNodeIdTxt.TabIndex = 34;
             // 
             // transferBtn
             // 
@@ -557,13 +555,13 @@
             this.setTxt.Location = new System.Drawing.Point(256, 170);
             this.setTxt.Name = "setTxt";
             this.setTxt.Size = new System.Drawing.Size(60, 20);
-            this.setTxt.TabIndex = 12;
+            this.setTxt.TabIndex = 6;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.maxChainLenTxt);
             this.groupBox1.Controls.Add(this.maxChain);
-            this.groupBox1.Location = new System.Drawing.Point(13, 414);
+            this.groupBox1.Location = new System.Drawing.Point(13, 475);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(248, 81);
             this.groupBox1.TabIndex = 29;
@@ -588,11 +586,81 @@
             this.maxChain.UseVisualStyleBackColor = true;
             this.maxChain.Click += new System.EventHandler(this.maxChain_Click);
             // 
+            // algoKeyLbl
+            // 
+            this.algoKeyLbl.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.algoKeyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.algoKeyLbl.ForeColor = System.Drawing.Color.White;
+            this.algoKeyLbl.Location = new System.Drawing.Point(363, 67);
+            this.algoKeyLbl.Multiline = true;
+            this.algoKeyLbl.Name = "algoKeyLbl";
+            this.algoKeyLbl.Size = new System.Drawing.Size(273, 72);
+            this.algoKeyLbl.TabIndex = 33;
+            this.algoKeyLbl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.algoKeyLbl_KeyDown);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(283, 559);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 13);
+            this.label9.TabIndex = 36;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(363, 498);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(267, 40);
+            this.textBox1.TabIndex = 36;
+            this.textBox1.Text = "You have to also enter the Transfer node\'s Password and Algo Key";
+            // 
+            // childNodeIdTxt
+            // 
+            this.childNodeIdTxt.BackColor = System.Drawing.SystemColors.Control;
+            this.childNodeIdTxt.Enabled = false;
+            this.childNodeIdTxt.Location = new System.Drawing.Point(101, 226);
+            this.childNodeIdTxt.Name = "childNodeIdTxt";
+            this.childNodeIdTxt.Size = new System.Drawing.Size(215, 20);
+            this.childNodeIdTxt.TabIndex = 25;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 229);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "Child Node Id";
+            // 
+            // parentNodeIdTxt
+            // 
+            this.parentNodeIdTxt.BackColor = System.Drawing.SystemColors.Control;
+            this.parentNodeIdTxt.Enabled = false;
+            this.parentNodeIdTxt.Location = new System.Drawing.Point(101, 202);
+            this.parentNodeIdTxt.Name = "parentNodeIdTxt";
+            this.parentNodeIdTxt.Size = new System.Drawing.Size(215, 20);
+            this.parentNodeIdTxt.TabIndex = 24;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 205);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 13);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "Parent Node Id";
+            // 
             // NodeCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 504);
+            this.ClientSize = new System.Drawing.Size(644, 566);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.algoKeyLbl);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.transferGb);
             this.Controls.Add(this.mergeGb);
@@ -603,7 +671,6 @@
             this.Controls.Add(this.modeLbl);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.algoKeyLbl);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.passText);
             this.Controls.Add(this.cmdSave);
@@ -651,7 +718,6 @@
         private System.Windows.Forms.Button cmdSave;
         private System.Windows.Forms.TextBox passText;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label algoKeyLbl;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox algoKeyTxt;
@@ -686,6 +752,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox maxChainLenTxt;
         private System.Windows.Forms.Button maxChain;
+        private System.Windows.Forms.TextBox algoKeyLbl;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox childNodeIdTxt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox parentNodeIdTxt;
+        private System.Windows.Forms.Label label14;
     }
 }
 
