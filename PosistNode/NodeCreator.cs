@@ -53,6 +53,11 @@ namespace PosistNode
 
         private void cmdSave_Click(object sender, EventArgs e)
         {
+            //dont resave the same node again.
+            if(this.Mode == Constants.Mode.Edit)
+            {
+                return;
+            }
             if(!this.validateCreateFields())
             {
                 return;
@@ -200,12 +205,11 @@ namespace PosistNode
             this.Mode = Constants.Mode.Edit;
         }
 
-        private Constants.Mode _mode;
         private Constants.Mode Mode
         {
             get
             {
-                return this._mode;
+                return this._vm.Mode;
             }
             set
             {
