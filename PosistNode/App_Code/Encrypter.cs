@@ -32,10 +32,13 @@ namespace PosistNode.App_Code
 
         private CipherBox _cipher;
 
-        public Encrypter(string password)
+        private string _extraKey;
+
+        public Encrypter(string password,string extraKey = "")
         {
             this._password = password;
             this._data = new Dictionary<string, string>();
+            this._extraKey = extraKey;
         }
 
         public void AddDataPair(string key, string value)
@@ -72,7 +75,7 @@ namespace PosistNode.App_Code
             this.createDataDigest();
             //to get unique algo key each time.
             Byte[] digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest);
-            Byte[] md5digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest + DateTime.UtcNow.ToString() + PASSWORD_PADDING);
+            Byte[] md5digestBytes = UTF8Encoding.UTF8.GetBytes(this._dataDigest + DateTime.UtcNow.ToString() + DateTime.Now.Ticks.ToString() + this._extraKey + PASSWORD_PADDING);
             MD5CryptoServiceProvider md5Key = new MD5CryptoServiceProvider();
             Byte[] computedMD5 = md5Key.ComputeHash(md5digestBytes);
             md5Key.Dispose();

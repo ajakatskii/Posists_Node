@@ -143,12 +143,12 @@ namespace PosistNode.App_Code
             return true;
         }
 
-        private bool getNewEncrypter(Decrypter decrypter,bool modifyCipher = false)
+        private bool getNewEncrypter(Decrypter decrypter,bool modifyCipher = true)
         {
             Encrypter encrypter = null;
             try
             {
-                encrypter = new Encrypter(this.Cipher.Password);
+                encrypter = new Encrypter(this.Cipher.Password,"split");
                 foreach (KeyValuePair<String, String> kv in decrypter.Data)
                 {
                     encrypter.AddDataPair(kv.Key, kv.Value);
