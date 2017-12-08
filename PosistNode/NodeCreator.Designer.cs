@@ -41,41 +41,41 @@
             this.valueTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cmdCreate = new System.Windows.Forms.Button();
+            this.cmdSave = new System.Windows.Forms.Button();
+            this.passText = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.algoKeyLbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.algoKeyTxt = new System.Windows.Forms.TextBox();
+            this.verifyNodeCmd = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.modeLbl = new System.Windows.Forms.Label();
+            this.saveIdLbl = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
+            this.cmdBreakNode = new System.Windows.Forms.Button();
+            this.subChainLengthCmd = new System.Windows.Forms.Button();
+            this.subChainLengthTxt = new System.Windows.Forms.Label();
             this.verifyGb = new System.Windows.Forms.GroupBox();
             this.editGb = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.breakValuetxt = new System.Windows.Forms.TextBox();
             this.exitBtn = new System.Windows.Forms.Button();
             this.getNodeGb = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.nodeIdTxt = new System.Windows.Forms.TextBox();
+            this.getNodeBtn = new System.Windows.Forms.Button();
             this.mergeGb = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.set1Txt = new System.Windows.Forms.TextBox();
+            this.mergeBtn = new System.Windows.Forms.Button();
+            this.set2Txt = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.transferGb = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.transferParentNodeId = new System.Windows.Forms.TextBox();
+            this.tranferNodeIdTxt = new System.Windows.Forms.TextBox();
+            this.transferBtn = new System.Windows.Forms.Button();
             this.setTxt = new System.Windows.Forms.TextBox();
             this.newNodeGb.SuspendLayout();
             this.verifyGb.SuspendLayout();
@@ -93,7 +93,7 @@
             this.newNodeGb.Controls.Add(this.valueTxt);
             this.newNodeGb.Controls.Add(this.phoneTxt);
             this.newNodeGb.Controls.Add(this.mobileTxt);
-            this.newNodeGb.Controls.Add(this.label14);
+            this.newNodeGb.Controls.Add(this.saveIdLbl);
             this.newNodeGb.Controls.Add(this.label5);
             this.newNodeGb.Controls.Add(this.label15);
             this.newNodeGb.Controls.Add(this.label4);
@@ -206,30 +206,32 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Set :";
             // 
-            // button1
+            // cmdCreate
             // 
-            this.button1.Location = new System.Drawing.Point(12, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 41);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Create New";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cmdCreate.Location = new System.Drawing.Point(12, 238);
+            this.cmdCreate.Name = "cmdCreate";
+            this.cmdCreate.Size = new System.Drawing.Size(92, 41);
+            this.cmdCreate.TabIndex = 1;
+            this.cmdCreate.Text = "Add New";
+            this.cmdCreate.UseVisualStyleBackColor = true;
+            this.cmdCreate.Click += new System.EventHandler(this.cmdCreate_Click);
             // 
-            // button2
+            // cmdSave
             // 
-            this.button2.Location = new System.Drawing.Point(110, 238);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 41);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cmdSave.Location = new System.Drawing.Point(110, 238);
+            this.cmdSave.Name = "cmdSave";
+            this.cmdSave.Size = new System.Drawing.Size(92, 41);
+            this.cmdSave.TabIndex = 2;
+            this.cmdSave.Text = "Save New";
+            this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
-            // textBox3
+            // passText
             // 
-            this.textBox3.Location = new System.Drawing.Point(424, 21);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(212, 20);
-            this.textBox3.TabIndex = 3;
+            this.passText.Location = new System.Drawing.Point(424, 21);
+            this.passText.Name = "passText";
+            this.passText.Size = new System.Drawing.Size(212, 20);
+            this.passText.TabIndex = 3;
             // 
             // label8
             // 
@@ -240,17 +242,17 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "Password";
             // 
-            // label9
+            // algoKeyLbl
             // 
-            this.label9.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(363, 66);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(273, 40);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "None";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.algoKeyLbl.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.algoKeyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.algoKeyLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.algoKeyLbl.Location = new System.Drawing.Point(363, 66);
+            this.algoKeyLbl.Name = "algoKeyLbl";
+            this.algoKeyLbl.Size = new System.Drawing.Size(273, 40);
+            this.algoKeyLbl.TabIndex = 14;
+            this.algoKeyLbl.Text = "None";
+            this.algoKeyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
@@ -270,21 +272,22 @@
             this.label11.TabIndex = 17;
             this.label11.Text = "Algo Key";
             // 
-            // textBox4
+            // algoKeyTxt
             // 
-            this.textBox4.Location = new System.Drawing.Point(61, 28);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(206, 20);
-            this.textBox4.TabIndex = 16;
+            this.algoKeyTxt.Location = new System.Drawing.Point(61, 28);
+            this.algoKeyTxt.Name = "algoKeyTxt";
+            this.algoKeyTxt.Size = new System.Drawing.Size(206, 20);
+            this.algoKeyTxt.TabIndex = 16;
             // 
-            // button3
+            // verifyNodeCmd
             // 
-            this.button3.Location = new System.Drawing.Point(119, 59);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 41);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Get / Verify Node";
-            this.button3.UseVisualStyleBackColor = true;
+            this.verifyNodeCmd.Location = new System.Drawing.Point(119, 59);
+            this.verifyNodeCmd.Name = "verifyNodeCmd";
+            this.verifyNodeCmd.Size = new System.Drawing.Size(148, 41);
+            this.verifyNodeCmd.TabIndex = 18;
+            this.verifyNodeCmd.Text = "Get / Verify Node";
+            this.verifyNodeCmd.UseVisualStyleBackColor = true;
+            this.verifyNodeCmd.Click += new System.EventHandler(this.verifyNodeCmd_Click);
             // 
             // label12
             // 
@@ -296,25 +299,25 @@
             this.label12.TabIndex = 19;
             this.label12.Text = "Mode :";
             // 
-            // label13
+            // modeLbl
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(289, 250);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 29);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Add";
+            this.modeLbl.AutoSize = true;
+            this.modeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modeLbl.Location = new System.Drawing.Point(289, 250);
+            this.modeLbl.Name = "modeLbl";
+            this.modeLbl.Size = new System.Drawing.Size(56, 29);
+            this.modeLbl.TabIndex = 20;
+            this.modeLbl.Text = "Add";
             // 
-            // label14
+            // saveIdLbl
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(107, 169);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 24);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "Add";
+            this.saveIdLbl.AutoSize = true;
+            this.saveIdLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveIdLbl.Location = new System.Drawing.Point(107, 169);
+            this.saveIdLbl.Name = "saveIdLbl";
+            this.saveIdLbl.Size = new System.Drawing.Size(54, 24);
+            this.saveIdLbl.TabIndex = 22;
+            this.saveIdLbl.Text = "none";
             // 
             // label15
             // 
@@ -325,40 +328,42 @@
             this.label15.TabIndex = 21;
             this.label15.Text = "Saved Node Id :";
             // 
-            // button4
+            // cmdBreakNode
             // 
-            this.button4.Location = new System.Drawing.Point(171, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(92, 41);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "Break Node";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cmdBreakNode.Location = new System.Drawing.Point(171, 19);
+            this.cmdBreakNode.Name = "cmdBreakNode";
+            this.cmdBreakNode.Size = new System.Drawing.Size(92, 41);
+            this.cmdBreakNode.TabIndex = 23;
+            this.cmdBreakNode.Text = "Break Node";
+            this.cmdBreakNode.UseVisualStyleBackColor = true;
+            this.cmdBreakNode.Click += new System.EventHandler(this.cmdBreakNode_Click);
             // 
-            // button5
+            // subChainLengthCmd
             // 
-            this.button5.Location = new System.Drawing.Point(171, 66);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(92, 41);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "Sub Chain Length ";
-            this.button5.UseVisualStyleBackColor = true;
+            this.subChainLengthCmd.Location = new System.Drawing.Point(171, 66);
+            this.subChainLengthCmd.Name = "subChainLengthCmd";
+            this.subChainLengthCmd.Size = new System.Drawing.Size(92, 41);
+            this.subChainLengthCmd.TabIndex = 24;
+            this.subChainLengthCmd.Text = "Sub Chain Length ";
+            this.subChainLengthCmd.UseVisualStyleBackColor = true;
+            this.subChainLengthCmd.Click += new System.EventHandler(this.subChainLengthCmd_Click);
             // 
-            // label16
+            // subChainLengthTxt
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(65, 72);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 24);
-            this.label16.TabIndex = 25;
-            this.label16.Text = "None";
+            this.subChainLengthTxt.AutoSize = true;
+            this.subChainLengthTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subChainLengthTxt.Location = new System.Drawing.Point(65, 72);
+            this.subChainLengthTxt.Name = "subChainLengthTxt";
+            this.subChainLengthTxt.Size = new System.Drawing.Size(57, 24);
+            this.subChainLengthTxt.TabIndex = 25;
+            this.subChainLengthTxt.Text = "None";
             // 
             // verifyGb
             // 
             this.verifyGb.BackColor = System.Drawing.SystemColors.Control;
-            this.verifyGb.Controls.Add(this.textBox4);
+            this.verifyGb.Controls.Add(this.algoKeyTxt);
             this.verifyGb.Controls.Add(this.label11);
-            this.verifyGb.Controls.Add(this.button3);
+            this.verifyGb.Controls.Add(this.verifyNodeCmd);
             this.verifyGb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.verifyGb.Location = new System.Drawing.Point(363, 113);
             this.verifyGb.Name = "verifyGb";
@@ -369,10 +374,10 @@
             // 
             // editGb
             // 
-            this.editGb.Controls.Add(this.textBox5);
-            this.editGb.Controls.Add(this.button4);
-            this.editGb.Controls.Add(this.button5);
-            this.editGb.Controls.Add(this.label16);
+            this.editGb.Controls.Add(this.breakValuetxt);
+            this.editGb.Controls.Add(this.cmdBreakNode);
+            this.editGb.Controls.Add(this.subChainLengthCmd);
+            this.editGb.Controls.Add(this.subChainLengthTxt);
             this.editGb.Location = new System.Drawing.Point(367, 238);
             this.editGb.Name = "editGb";
             this.editGb.Size = new System.Drawing.Size(269, 143);
@@ -380,12 +385,12 @@
             this.editGb.TabStop = false;
             this.editGb.Text = "Edit Node";
             // 
-            // textBox5
+            // breakValuetxt
             // 
-            this.textBox5.Location = new System.Drawing.Point(18, 30);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(136, 20);
-            this.textBox5.TabIndex = 19;
+            this.breakValuetxt.Location = new System.Drawing.Point(18, 30);
+            this.breakValuetxt.Name = "breakValuetxt";
+            this.breakValuetxt.Size = new System.Drawing.Size(136, 20);
+            this.breakValuetxt.TabIndex = 19;
             // 
             // exitBtn
             // 
@@ -402,8 +407,8 @@
             // 
             // getNodeGb
             // 
-            this.getNodeGb.Controls.Add(this.textBox6);
-            this.getNodeGb.Controls.Add(this.button7);
+            this.getNodeGb.Controls.Add(this.nodeIdTxt);
+            this.getNodeGb.Controls.Add(this.getNodeBtn);
             this.getNodeGb.Location = new System.Drawing.Point(14, 305);
             this.getNodeGb.Name = "getNodeGb";
             this.getNodeGb.Size = new System.Drawing.Size(281, 76);
@@ -411,29 +416,30 @@
             this.getNodeGb.TabStop = false;
             this.getNodeGb.Text = "Get Node By NodeId";
             // 
-            // textBox6
+            // nodeIdTxt
             // 
-            this.textBox6.Location = new System.Drawing.Point(18, 30);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(136, 20);
-            this.textBox6.TabIndex = 19;
+            this.nodeIdTxt.Location = new System.Drawing.Point(18, 30);
+            this.nodeIdTxt.Name = "nodeIdTxt";
+            this.nodeIdTxt.Size = new System.Drawing.Size(136, 20);
+            this.nodeIdTxt.TabIndex = 19;
             // 
-            // button7
+            // getNodeBtn
             // 
-            this.button7.Location = new System.Drawing.Point(171, 19);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(92, 41);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "Get Node";
-            this.button7.UseVisualStyleBackColor = true;
+            this.getNodeBtn.Location = new System.Drawing.Point(171, 19);
+            this.getNodeBtn.Name = "getNodeBtn";
+            this.getNodeBtn.Size = new System.Drawing.Size(92, 41);
+            this.getNodeBtn.TabIndex = 23;
+            this.getNodeBtn.Text = "Get Node";
+            this.getNodeBtn.UseVisualStyleBackColor = true;
+            this.getNodeBtn.Click += new System.EventHandler(this.getNodeBtn_Click);
             // 
             // mergeGb
             // 
             this.mergeGb.Controls.Add(this.label18);
             this.mergeGb.Controls.Add(this.label17);
-            this.mergeGb.Controls.Add(this.textBox8);
-            this.mergeGb.Controls.Add(this.textBox7);
-            this.mergeGb.Controls.Add(this.button8);
+            this.mergeGb.Controls.Add(this.set2Txt);
+            this.mergeGb.Controls.Add(this.set1Txt);
+            this.mergeGb.Controls.Add(this.mergeBtn);
             this.mergeGb.Location = new System.Drawing.Point(12, 387);
             this.mergeGb.Name = "mergeGb";
             this.mergeGb.Size = new System.Drawing.Size(281, 76);
@@ -441,28 +447,29 @@
             this.mergeGb.TabStop = false;
             this.mergeGb.Text = "Merge Two Sets";
             // 
-            // textBox7
+            // set1Txt
             // 
-            this.textBox7.Location = new System.Drawing.Point(18, 39);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(59, 20);
-            this.textBox7.TabIndex = 19;
+            this.set1Txt.Location = new System.Drawing.Point(18, 39);
+            this.set1Txt.Name = "set1Txt";
+            this.set1Txt.Size = new System.Drawing.Size(59, 20);
+            this.set1Txt.TabIndex = 19;
             // 
-            // button8
+            // mergeBtn
             // 
-            this.button8.Location = new System.Drawing.Point(173, 28);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(92, 41);
-            this.button8.TabIndex = 23;
-            this.button8.Text = "Get Node";
-            this.button8.UseVisualStyleBackColor = true;
+            this.mergeBtn.Location = new System.Drawing.Point(173, 28);
+            this.mergeBtn.Name = "mergeBtn";
+            this.mergeBtn.Size = new System.Drawing.Size(92, 41);
+            this.mergeBtn.TabIndex = 23;
+            this.mergeBtn.Text = "Merge";
+            this.mergeBtn.UseVisualStyleBackColor = true;
+            this.mergeBtn.Click += new System.EventHandler(this.mergeBtn_Click);
             // 
-            // textBox8
+            // set2Txt
             // 
-            this.textBox8.Location = new System.Drawing.Point(97, 39);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(59, 20);
-            this.textBox8.TabIndex = 24;
+            this.set2Txt.Location = new System.Drawing.Point(97, 39);
+            this.set2Txt.Name = "set2Txt";
+            this.set2Txt.Size = new System.Drawing.Size(59, 20);
+            this.set2Txt.TabIndex = 24;
             // 
             // label17
             // 
@@ -486,9 +493,9 @@
             // 
             this.transferGb.Controls.Add(this.label19);
             this.transferGb.Controls.Add(this.label20);
-            this.transferGb.Controls.Add(this.textBox9);
-            this.transferGb.Controls.Add(this.textBox10);
-            this.transferGb.Controls.Add(this.button9);
+            this.transferGb.Controls.Add(this.transferParentNodeId);
+            this.transferGb.Controls.Add(this.tranferNodeIdTxt);
+            this.transferGb.Controls.Add(this.transferBtn);
             this.transferGb.Location = new System.Drawing.Point(363, 387);
             this.transferGb.Name = "transferGb";
             this.transferGb.Size = new System.Drawing.Size(267, 126);
@@ -514,28 +521,29 @@
             this.label20.TabIndex = 30;
             this.label20.Text = "Node Id To transfer";
             // 
-            // textBox9
+            // transferParentNodeId
             // 
-            this.textBox9.Location = new System.Drawing.Point(117, 42);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(112, 20);
-            this.textBox9.TabIndex = 24;
+            this.transferParentNodeId.Location = new System.Drawing.Point(117, 42);
+            this.transferParentNodeId.Name = "transferParentNodeId";
+            this.transferParentNodeId.Size = new System.Drawing.Size(112, 20);
+            this.transferParentNodeId.TabIndex = 24;
             // 
-            // textBox10
+            // tranferNodeIdTxt
             // 
-            this.textBox10.Location = new System.Drawing.Point(117, 16);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(112, 20);
-            this.textBox10.TabIndex = 19;
+            this.tranferNodeIdTxt.Location = new System.Drawing.Point(117, 16);
+            this.tranferNodeIdTxt.Name = "tranferNodeIdTxt";
+            this.tranferNodeIdTxt.Size = new System.Drawing.Size(112, 20);
+            this.tranferNodeIdTxt.TabIndex = 19;
             // 
-            // button9
+            // transferBtn
             // 
-            this.button9.Location = new System.Drawing.Point(169, 75);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(92, 41);
-            this.button9.TabIndex = 23;
-            this.button9.Text = "Transfer";
-            this.button9.UseVisualStyleBackColor = true;
+            this.transferBtn.Location = new System.Drawing.Point(169, 75);
+            this.transferBtn.Name = "transferBtn";
+            this.transferBtn.Size = new System.Drawing.Size(92, 41);
+            this.transferBtn.TabIndex = 23;
+            this.transferBtn.Text = "Transfer";
+            this.transferBtn.UseVisualStyleBackColor = true;
+            this.transferBtn.Click += new System.EventHandler(this.transferBtn_Click);
             // 
             // setTxt
             // 
@@ -555,14 +563,14 @@
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.editGb);
             this.Controls.Add(this.verifyGb);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.modeLbl);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.algoKeyLbl);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.passText);
+            this.Controls.Add(this.cmdSave);
+            this.Controls.Add(this.cmdCreate);
             this.Controls.Add(this.newNodeGb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NodeCreator";
@@ -600,41 +608,41 @@
         private System.Windows.Forms.TextBox valueTxt;
         private System.Windows.Forms.TextBox phoneTxt;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button cmdCreate;
+        private System.Windows.Forms.Button cmdSave;
+        private System.Windows.Forms.TextBox passText;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label algoKeyLbl;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox algoKeyTxt;
+        private System.Windows.Forms.Button verifyNodeCmd;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label modeLbl;
+        private System.Windows.Forms.Label saveIdLbl;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button cmdBreakNode;
+        private System.Windows.Forms.Button subChainLengthCmd;
+        private System.Windows.Forms.Label subChainLengthTxt;
         private System.Windows.Forms.GroupBox verifyGb;
         private System.Windows.Forms.GroupBox editGb;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox breakValuetxt;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.GroupBox getNodeGb;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox nodeIdTxt;
+        private System.Windows.Forms.Button getNodeBtn;
         private System.Windows.Forms.GroupBox mergeGb;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox set2Txt;
+        private System.Windows.Forms.TextBox set1Txt;
+        private System.Windows.Forms.Button mergeBtn;
         private System.Windows.Forms.GroupBox transferGb;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox transferParentNodeId;
+        private System.Windows.Forms.TextBox tranferNodeIdTxt;
+        private System.Windows.Forms.Button transferBtn;
         private System.Windows.Forms.TextBox setTxt;
     }
 }

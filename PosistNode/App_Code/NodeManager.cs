@@ -33,12 +33,12 @@ namespace PosistNode.App_Code
 
         }
 
-        public bool createNewNode(string name, string address, string mobile, string phone, float value,string password, int set = -1)
+        public Node createNewNode(string name, string address, string mobile, string phone, float value,string password, int set = -1)
         {
             //create a node to insert
             Node node = new Node(UniqueId, name, address, mobile, phone, value, password);
             this.addNodeToSet(this.getSetIndex(set), node);
-            return true;
+            return node;
         }
 
         private int getSetIndex(int set)
@@ -106,7 +106,7 @@ namespace PosistNode.App_Code
             return max;
         }
 
-        public Node GetNodeById(long id)
+        public Node GetNode(long id)
         {
             Node node = null;
             foreach(NodeSet set in this._sets.Values)
@@ -133,7 +133,7 @@ namespace PosistNode.App_Code
             {
                 throw new ArgumentNullException("The Given NodeId has no associated node with it");
             }
-            Node parent = this.GetNodeById(newParentId);
+            Node parent = this.GetNode(newParentId);
             if (parent == null)
             {
                 throw new ArgumentNullException("The Given Parent NodeId has no associated node with it");

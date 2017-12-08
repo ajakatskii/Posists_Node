@@ -202,5 +202,16 @@ namespace PosistNode.App_Code
             subNode.ChildNode = child;
         }
 
+        public Dictionary<String,String> GetData()
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            Decrypter decrypter = new Decrypter(this.Cipher, this._data);
+            foreach (KeyValuePair<String, String> kv in decrypter.Data)
+            {
+                data.Add(kv.Key, kv.Value);
+            }
+            return data;
+        }
+
     }
 }
