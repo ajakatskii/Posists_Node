@@ -10,7 +10,7 @@ namespace PosistNode.ViewModel
     {
         private NodeManager _nodeManager;
 
-        NodeManagerVM()
+        public NodeManagerVM()
         {
             _nodeManager = new NodeManager();
         }
