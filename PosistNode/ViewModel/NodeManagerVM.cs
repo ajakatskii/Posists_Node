@@ -97,5 +97,10 @@ namespace PosistNode.ViewModel
             }
             return true;
         }
+
+        public int MaxChainLength()
+        {
+            return this._nodeManager.GetMaxLength();
+        }
     }
 }

@@ -302,5 +302,20 @@ namespace PosistNode
                 MessageBox.Show("Node Broken, Broken node is shown in Create Node Section!");
             }
         }
+
+        private void algoKeyTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maxChain_Click(object sender, EventArgs e)
+        {
+            this.maxChainLenTxt.Text = this._vm.MaxChainLength().ToString();
+        }
     }
 }
